@@ -1,0 +1,21 @@
+.weather-react-app{
+  &__wrapper{
+    height: 100vh;
+    display: flex;
+  }
+
+  &__layout{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__with-menu{
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+  }
+
+  &__without-menu{
+    width: 100%;
+
+  }
+}

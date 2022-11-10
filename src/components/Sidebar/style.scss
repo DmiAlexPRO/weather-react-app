@@ -1,0 +1,69 @@
+.weather-app-sidebar {
+  background-color: #183550;
+  color: white;
+  padding: 1rem;
+
+  .p-sidebar-close {
+    span{
+      color: #ffffff;
+
+      transition: 250ms;
+      -moz-transition: 250ms;
+      -webkit-transition: 250ms;
+      -o-transition: 250ms;
+      -ms-transition: 250ms;
+    }
+
+    &:focus,  &:focus-visible{
+      border: none  !important;
+      box-shadow: none  !important;
+      color: #ffffff  !important;
+    }
+
+    transition: 250ms;
+    -moz-transition: 250ms;
+    -webkit-transition: 250ms;
+    -o-transition: 250ms;
+    -ms-transition: 250ms;
+
+    &:hover span{
+      color: var(--background-color-main);
+    }
+  }
+
+  &__weather-data{
+    padding-top: 50px;
+  }
+
+  &__weather-info{
+    margin-top: 1rem;
+
+    .title{
+      font-size: 0.875rem;
+    }
+
+    .value{
+      padding-top: 0.25rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+  }
+
+  &__actual-time {
+    text-align: center;
+    width: 80%;
+    background-color: rgba(10, 8, 36, 0.535);
+    border-radius: 8px;
+    padding: 1rem 0;
+    margin: 100px auto 0 auto;
+
+    .clock {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__copyright {
+    float: bottom;
+  }
+
+}

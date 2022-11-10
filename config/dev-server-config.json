@@ -1,0 +1,6 @@
+{
+  "devServerConfig": {
+    "open": false,
+    "port": 3000
+  }
+}

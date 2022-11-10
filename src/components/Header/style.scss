@@ -1,0 +1,38 @@
+.weather-app-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  &__position, &__current-date {
+    color: #ffffff;
+    text-align: center;
+    align-content: center;
+  }
+
+  &__sidebar-btn{
+    color: #ffffff !important;
+    padding: 0;
+
+    & > span{
+      font-size: 1.25rem;
+    }
+
+    &:focus,  &:focus-visible{
+      border: none;
+      box-shadow: none;
+      color: #ffffff;
+    }
+
+    &:hover{
+      color: #57a1ee !important;
+      background-color: var(--background-color-main) !important;
+      transition: 250ms;
+      -moz-transition: 250ms;
+      -webkit-transition: 250ms;
+      -o-transition: 250ms;
+      -ms-transition: 250ms;
+    }
+  }
+}
