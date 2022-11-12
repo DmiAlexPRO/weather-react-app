@@ -1,7 +1,7 @@
 import React from "react";
-import {getIconPath} from "../../index";
 import './style.scss';
-import {useClassName} from "../../../../shared/utils";
+import {useClassName} from "@utils";
+import { getIconPath } from "../../utils";
 
 type WeatherMiniaturePropType = {
     url: string,

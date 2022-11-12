@@ -1,21 +1,19 @@
 import "./style.scss"
 import WeatherMiniature from "./components/WeatherMiniature";
-import {$currentWeather} from "../../models/weather";
+import {$currentWeather} from "@models";
 import {useStore} from "effector-react";
-import {KELVIN, WEEKDAYS_ENG, WEEKDAYS_RU} from "../../shared/consts";
-import {$weatherForecast} from "../../models/weather-forecast";
+import {$weatherForecast} from "@models";
 import {DateTime} from 'luxon';
 import {Carousel} from "primereact/carousel";
-import {IMeasurement} from "../../shared/interfaces";
-import {useClassName} from "../../shared/utils";
+import {IMeasurement} from "@interfaces";
+import {useClassName} from "@utils";
+import {KELVIN, WEEKDAYS_ENG, WEEKDAYS_RU} from '@shared'
+import {getIconPath} from './utils'
 
 export type MainPropType = {
     latitude: number;
     longitude: number;
 };
-
-export const getIconPath = (iconName: string, iconType: 'svg' | 'jpg' | 'png' | 'gif' = 'svg') =>
-    `img/animated/${iconName}.${iconType}`; // TODO: вынести в утилиту
 
 const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
     const {currentWeather,  isLoading: isCurrentWeatherLoading} = useStore($currentWeather);

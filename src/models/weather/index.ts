@@ -1,4 +1,4 @@
-import {API} from '../../shared/services';
+import {API} from '@services';
 import {combine, createDomain, sample} from "effector";
 import {IWeather} from "../../shared/interfaces/weather";
 import {defaultCurrentWeather} from "./consts";

@@ -1,9 +1,9 @@
 import React from "react";
 import './style.scss';
 import {useStore} from "effector-react";
-import {$currentWeather} from "../../models/weather";
+import {$currentWeather} from "@models";
 import {Button} from "primereact/button";
-import {useClassName} from "../../shared/utils";
+import {useClassName} from "@utils";
 
 export type HeaderPropType = {
     latitude: number;

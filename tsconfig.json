@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "rootDir": "src",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,9 +20,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "importHelpers": true
   },
   "include": [
     "src"
-  ]
+  ],
+  "extends": "./tsconfig.paths.json"
 }

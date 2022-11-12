@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@shared": [
+        "src/shared"
+      ],
+      "@components": [
+        "src/components"
+      ],
+      "@services": [
+        "src/shared/services"
+      ],
+      "@interfaces": [
+        "src/shared/interfaces"
+      ],
+      "@utils": [
+        "src/shared/utils"
+      ],
+      "@models": [
+        "src/models"
+      ]
+    }
+  }
+}

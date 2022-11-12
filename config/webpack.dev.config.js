@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-const { devServerConfig } = require('./dev-server-config.json');
+const {devServerConfig} = require('./dev-server-config.json');
 
 const SRC_PATH = path.resolve(__dirname, '../src');
 
@@ -11,7 +11,15 @@ module.exports = {
     entry: `${SRC_PATH}/index.tsx`,
     resolve: {
         modules: [SRC_PATH, 'node_modules'],
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            "@shared": path.resolve(__dirname, '../src/shared'),
+            "@components": path.resolve(__dirname, '../src/components'),
+            "@services": path.resolve(__dirname, '../src/shared/services'),
+            "@interfaces": path.resolve(__dirname, '../src/shared/interfaces'),
+            "@utils": path.resolve(__dirname, '../src/shared/utils'),
+            "@models": path.resolve(__dirname, '../src/models')
+        }
     },
     // devtool: 'source-map',
     output: {
@@ -114,10 +122,6 @@ module.exports = {
                 directory: path.join(__dirname, '../dist')
             }
         ],
-        compress: true,
-        port: devServerConfig.port,
-        // proxy: devServerConfig.proxy,
-        open: devServerConfig.open,
-        historyApiFallback: true
+        ...devServerConfig
     }
 }

@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './Layout.scss';
-import Preloader from "./components/Preloader";
-import Header from "./components/Header";
+import {Header, Sidebar, Main} from "@components";
 import {useGeolocated} from "react-geolocated";
-import {getCurrentWeatherEvent} from "./models/weather";
-import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
-import {getWeatherForecast} from "./models/weather-forecast";
-import {useClassName} from "./shared/utils";
+import {getCurrentWeatherEvent} from "@models";
+import {getWeatherForecast} from "@models";
+import {useClassName} from "@utils";
 
 const Layout: React.FC = () => {
     const [sideMenuVisible, setSideMenuVisible] = useState<boolean>(true);

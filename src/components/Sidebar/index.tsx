@@ -1,7 +1,7 @@
 import "./style.scss"
 import {Sidebar as PrimeReactSidebar} from "primereact/sidebar";
 import React from "react";
-import {useClassName} from "../../shared/utils";
+import {useClassName} from "@utils";
 
 export type NavigationPropType = {
   visible: boolean;
