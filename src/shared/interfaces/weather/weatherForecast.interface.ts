@@ -1,20 +1,4 @@
-import {IWind} from "./wind.interface";
-
-export interface IWeatherForecast {
-    city: {
-        country: string,
-        name: string,
-        population: number,
-        sunrise: number,
-        sunset: number,
-        timezone: number,
-    },
-    list: IMeasurement[] | undefined,
-
-    // A number of timestamps returned in the API response
-    cnt: number, // (count)
-
-}
+import {IWind} from './wind.interface';
 
 export interface IMeasurement {
     main: {
@@ -37,19 +21,32 @@ export interface IMeasurement {
     },
     weather: {
         description: string,
-          icon: string,
-          main: string,
+        icon: string,
+        main: string,
     }[],
-  wind: IWind,
-  clouds: {
-    all: number,
-},
+    wind: IWind,
+    clouds: {
+        all: number,
+    },
     visibility: number,
 
-      // Unix time
-      dt: number, // (dateTime)
-  dt_txt: string, // (dateTimeText)
-  pop: number,
-
+    // Unix time
+    dt: number, // (dateTime)
+    dt_txt: string, // (dateTimeText)
+    pop: number,
 }
 
+export interface IWeatherForecast {
+    city: {
+        country: string,
+        name: string,
+        population: number,
+        sunrise: number,
+        sunset: number,
+        timezone: number,
+    },
+    list: IMeasurement[] | undefined,
+
+    // A number of timestamps returned in the API response
+    cnt: number, // (count)
+}

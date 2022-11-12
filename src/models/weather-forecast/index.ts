@@ -1,34 +1,31 @@
-import {combine, createDomain, sample} from "effector/compat";
+import {combine, createDomain, sample} from 'effector/compat';
 
-import {API} from "../../shared/services";
-import {defaultWeatherForecast} from "./consts";
-import {IWeatherForecast} from "../../shared/interfaces/weather";
-
+import {API} from '@services';
+import {IWeatherForecast} from '@interfaces';
+import {defaultWeatherForecast} from './consts';
 
 const weatherForecastDomain = createDomain('timeMachine');
 
 const weatherForecastStore = weatherForecastDomain.createStore<IWeatherForecast>(defaultWeatherForecast);
 
 const getWeatherForecastFx = weatherForecastDomain.createEffect(async (
-  {latitude, longitude}: {latitude: number, longitude: number}
-) => {
-  return await API.timeMachine.getTimeMachine(latitude, longitude).then(({data}) => data);
-});
+    {latitude, longitude}: {latitude: number, longitude: number}
+) => await API.timeMachine.getTimeMachine(latitude, longitude).then(({data}) => data));
 
 export const getWeatherForecast= weatherForecastDomain
-  .createEvent<{latitude: number, longitude: number}>();
+    .createEvent<{latitude: number, longitude: number}>();
 export const clearTimeMachineEvent = weatherForecastDomain.createEvent();
 
 weatherForecastStore
-  .on(getWeatherForecastFx.doneData, (_, forecast) => forecast)
-  .reset(clearTimeMachineEvent);
+    .on(getWeatherForecastFx.doneData, (_, forecast) => forecast)
+    .reset(clearTimeMachineEvent);
 
 sample({
-  clock: getWeatherForecast,
-  target: getWeatherForecastFx
+    clock: getWeatherForecast,
+    target: getWeatherForecastFx
 });
 
 export const $weatherForecast = combine({
-  isLoading: getWeatherForecastFx.pending,
-  weatherForecast: weatherForecastStore
+    isLoading: getWeatherForecastFx.pending,
+    weatherForecast: weatherForecastStore
 });

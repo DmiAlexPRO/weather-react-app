@@ -1,14 +1,13 @@
-import "./style.scss"
-import WeatherMiniature from "./components/WeatherMiniature";
-import {$currentWeather} from "@models";
-import {useStore} from "effector-react";
-import {$weatherForecast} from "@models";
+import './style.scss';
+import {$currentWeather, $weatherForecast} from '@models';
+import {useStore} from 'effector-react';
 import {DateTime} from 'luxon';
-import {Carousel} from "primereact/carousel";
-import {IMeasurement} from "@interfaces";
-import {useClassName} from "@utils";
-import {KELVIN, WEEKDAYS_ENG, WEEKDAYS_RU} from '@shared'
-import {getIconPath} from './utils'
+import {Carousel} from 'primereact/carousel';
+import {IMeasurement} from '@interfaces';
+import {useClassName} from '@utils';
+import {KELVIN, WEEKDAYS_ENG, WEEKDAYS_RU} from '@shared';
+import WeatherMiniature from './components/WeatherMiniature';
+import {getIconPath} from './utils';
 
 export type MainPropType = {
     latitude: number;
@@ -16,15 +15,16 @@ export type MainPropType = {
 };
 
 const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
-    const {currentWeather,  isLoading: isCurrentWeatherLoading} = useStore($currentWeather);
+    const {currentWeather, isLoading: isCurrentWeatherLoading} = useStore($currentWeather);
     const {weatherForecast, isLoading: isWeatherForecastLoading} = useStore($weatherForecast);
-    const isLoading =  isCurrentWeatherLoading || isWeatherForecastLoading;
-    const imgSrc = getIconPath(currentWeather?.weather[0].icon)
+    const isLoading = isCurrentWeatherLoading || isWeatherForecastLoading;
+
+    const imgSrc = getIconPath(currentWeather?.weather[0].icon);
     const dayOfWeek = WEEKDAYS_ENG[new Date().getDay()];
     const temperature = Math.ceil(currentWeather.main.temp - KELVIN);
     const weatherStatus = currentWeather.weather[0].main;
 
-    const cn = useClassName('weather-app-main')
+    const cn = useClassName('weather-app-main');
 
     const responsiveOptions = [
         {
@@ -49,9 +49,9 @@ const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
 
         return (
             <WeatherMiniature
-                temperature={Math.ceil(data.main.temp - KELVIN)} //TODO: вынести в утилиту
+                temperature={Math.ceil(data.main.temp - KELVIN)} // TODO: вынести в утилиту
                 url={data.weather[0].icon}
-                weekDay={`${WEEKDAYS_RU[now.weekday - 1]} - ${now.toLocaleString()} - ${now.hour}:00`} //TODO: вынести в утилиту
+                weekDay={`${WEEKDAYS_RU[now.weekday - 1]} - ${now.toLocaleString()} - ${now.hour}:00`} // TODO: в утилиту
             />
         );
     };
@@ -59,19 +59,17 @@ const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
     return (
         <div className={cn()}>
             <div className={cn('actual')}>
-                {
-                    <div className={cn('container')}>
-                        <p>{dayOfWeek}</p>
-                        <img src={imgSrc} alt=""/>
-                        <p> {temperature}°<span>c</span></p>
-                        <p>{weatherStatus}</p>
-                        <div className="Punto" ></div>
-                    </div>
-                }
+                <div className={cn('container')}>
+                    <p>{dayOfWeek}</p>
+                    <img src={imgSrc} alt="" />
+                    <p> {temperature}°<span>c</span></p>
+                    <p>{weatherStatus}</p>
+                    <div className="Punto" />
+                </div>
             </div>
             <div>
                 <Carousel className={cn('carousel')}
-                    value={weatherForecast.list  || []}
+                    value={weatherForecast.list || []}
                     numVisible={4}
                     numScroll={4}
                     responsiveOptions={responsiveOptions}
@@ -80,6 +78,6 @@ const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Main;

@@ -1,7 +1,7 @@
-import "./style.scss"
-import {Sidebar as PrimeReactSidebar} from "primereact/sidebar";
-import React from "react";
-import {useClassName} from "@utils";
+import './style.scss';
+import {Sidebar as PrimeReactSidebar} from 'primereact/sidebar';
+import React from 'react';
+import {useClassName} from '@utils';
 
 export type NavigationPropType = {
   visible: boolean;
@@ -9,12 +9,12 @@ export type NavigationPropType = {
 };
 
 const Sidebar: React.FC<NavigationPropType> = ({visible, setVisible}) => {
-    const cn = useClassName('weather-app-sidebar')
+    const cn = useClassName('weather-app-sidebar');
     return (
         <PrimeReactSidebar visible={visible}
             position="left"
             onHide={() => setVisible(false)}
-            showCloseIcon={true}
+            showCloseIcon
             dismissable={false}
             closeOnEscape={false}
             blockScroll={false}
@@ -24,7 +24,7 @@ const Sidebar: React.FC<NavigationPropType> = ({visible, setVisible}) => {
             <div className={cn('weather-data')}>
 
                 <h6>Actual info</h6>
-                <hr/>
+                <hr />
                 <div className={cn('weather-info')}>
                     <p className="title">Wind speed:</p>
                     <span className="value">12321</span>
@@ -61,6 +61,6 @@ const Sidebar: React.FC<NavigationPropType> = ({visible, setVisible}) => {
             </div>
         </PrimeReactSidebar>
     );
-}
+};
 
 export default Sidebar;

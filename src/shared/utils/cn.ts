@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { IFunction, IObject } from '../interfaces';
+import { IFunction, IObject } from '@interfaces';
 
 function getPrefix(base: string, separator: string, element: any): string {
     switch (typeof element) {

@@ -1,5 +1,5 @@
-import {WeatherAPIClient} from "./WeatherAPIClient";
-import {WeatherForecastAPIClient} from "./WeatherForecastAPIClient";
+import {WeatherAPIClient} from './WeatherAPIClient';
+import {WeatherForecastAPIClient} from './WeatherForecastAPIClient';
 
 export const API = Object.freeze({
     weather: new WeatherAPIClient(),

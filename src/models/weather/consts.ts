@@ -1,4 +1,4 @@
-import {IWeather} from "../../shared/interfaces/weather";
+import {IWeather} from '@interfaces';
 
 export const defaultCurrentWeather: IWeather = {
     main: {

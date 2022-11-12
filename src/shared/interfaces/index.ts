@@ -1,2 +1,2 @@
 export * from './weather';
-export * from  './utils';
+export * from './utils';
