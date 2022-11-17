@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Layout.scss';
 import {Header, Sidebar, Main} from '@components';
 import {useGeolocated} from 'react-geolocated';
