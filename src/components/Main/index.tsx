@@ -1,28 +1,31 @@
 import './style.scss';
-import {$currentWeather, $weatherForecast} from '@models';
+import { $currentWeather, $openMeteo, $weatherForecast } from '@models';
 import {useStore} from 'effector-react';
 import {DateTime} from 'luxon';
 import {Carousel} from 'primereact/carousel';
 import {IMeasurement} from '@interfaces';
 import {useClassName} from '@utils';
-import {KELVIN, WEEKDAYS_ENG, WEEKDAYS_RU} from '@shared';
+import {
+    KELVIN,
+    WEATHER_INTERPRETATION_CODES_RU,
+    WEEKDAYS_ENG,
+    WEEKDAYS_RU
+} from '@shared';
+
 import WeatherMiniature from './components/WeatherMiniature';
 import {getIconPath} from './utils';
 
-export type MainPropType = {
-    latitude: number;
-    longitude: number;
-};
-
-const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
+const Main: React.FC = () => {
     const {currentWeather, isLoading: isCurrentWeatherLoading} = useStore($currentWeather);
     const {weatherForecast, isLoading: isWeatherForecastLoading} = useStore($weatherForecast);
-    const isLoading = isCurrentWeatherLoading || isWeatherForecastLoading;
+    const {openMeteoWeatherData, isLoading: isOpenMeteoWeatherDataLoading} = useStore($openMeteo);
+    console.log('openMeteoWeatherData: ', openMeteoWeatherData);
+
+    const isLoading = isCurrentWeatherLoading || isWeatherForecastLoading || isOpenMeteoWeatherDataLoading;
 
     const imgSrc = getIconPath(currentWeather?.weather[0].icon);
-    const dayOfWeek = WEEKDAYS_ENG[new Date().getDay()];
-    const temperature = Math.ceil(currentWeather.main.temp - KELVIN);
-    const weatherStatus = currentWeather.weather[0].main;
+    const dayOfWeek = WEEKDAYS_RU[new Date().getDay()];
+    const temperature = Math.ceil(openMeteoWeatherData.current_weather.temperature);
 
     const cn = useClassName('weather-app-main');
 
@@ -62,8 +65,8 @@ const Main: React.FC<MainPropType> = ({latitude, longitude }) => {
                 <div className={cn('container')}>
                     <p>{dayOfWeek}</p>
                     <img src={imgSrc} alt="" />
-                    <p> {temperature}°<span>c</span></p>
-                    <p>{weatherStatus}</p>
+                    <p> {temperature}°<span>c</span></p> {/* TODO: вынести знак градусов и величину в компонент */}
+                    <p>{WEATHER_INTERPRETATION_CODES_RU.get(openMeteoWeatherData.current_weather.weathercode)}</p>
                     <div className="Punto" />
                 </div>
             </div>

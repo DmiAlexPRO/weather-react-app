@@ -1,0 +1,20 @@
+export interface IDailyForecast {
+    apparent_temperature_max: number[],
+    apparent_temperature_min: number[],
+    et0_fao_evapotranspiration: number[],
+    precipitation_hours: number[],
+    precipitation_sum: number[],
+    rain_sum: number[],
+    shortwave_radiation_sum: number[],
+    showers_sum: number[],
+    snowfall_sum: number[],
+    sunrise: number[],
+    sunset: number[],
+    temperature_2m_max: number[],
+    temperature_2m_min: number[],
+    time: number[],
+    weathercode: number[],
+    winddirection_10m_dominant: number[],
+    windgusts_10m_max: number[],
+    windspeed_10m_max: number[]
+}

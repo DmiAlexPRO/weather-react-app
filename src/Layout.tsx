@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Layout.scss';
 import {Header, Sidebar, Main} from '@components';
 import {useGeolocated} from 'react-geolocated';
-import {getCurrentWeatherEvent, getWeatherForecast} from '@models';
+
+import {
+    getCurrentWeatherEvent,
+    getOpenMeteoDataEvent,
+    getWeatherForecast
+} from '@models';
+
 import {useClassName} from '@utils';
 
 const Layout: React.FC = () => {
@@ -24,6 +30,7 @@ const Layout: React.FC = () => {
         if (latitude && longitude) {
             getCurrentWeatherEvent({latitude, longitude});
             getWeatherForecast({latitude, longitude});
+            getOpenMeteoDataEvent({latitude, longitude});
         }
     }, [coords]);
 
@@ -42,7 +49,7 @@ const Layout: React.FC = () => {
                             longitude={longitude}
                         />
                     )}
-                {(latitude && longitude) && <Main latitude={latitude} longitude={longitude} />}
+                {(latitude && longitude) && <Main />}
             </section>
 
         </div>
