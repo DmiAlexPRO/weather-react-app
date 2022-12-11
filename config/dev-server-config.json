@@ -1,6 +1,7 @@
 {
   "devServerConfig": {
     "open": false,
+    "allowedHosts": "all",
     "port": 3000,
     "compress": true,
     "historyApiFallback": true,
