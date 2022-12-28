@@ -6,13 +6,16 @@ import 'primereact/resources/primereact.min.css'; // core css
 import 'primeicons/primeicons.css'; // icons
 
 import './index.scss';
-import Layout from './Layout';
+import { BrowserRouter } from 'react-router-dom';
+import App from './app';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        <Layout />
-    </React.StrictMode>
+    <BrowserRouter>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </BrowserRouter>
 );

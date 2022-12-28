@@ -1,20 +1,15 @@
+import { Header, Sidebar } from '@components';
 import React, { useEffect, useState } from 'react';
-import './Layout.scss';
-import {Header, Sidebar, Main} from '@components';
-import {useGeolocated} from 'react-geolocated';
-
-import {
-    getCurrentWeatherEvent,
-    getOpenMeteoDataEvent,
-    getWeatherForecast
-} from '@models';
-
-import {useClassName} from '@utils';
+import { useGeolocated } from 'react-geolocated';
+import { useClassName } from '@utils';
+import { getCurrentWeatherEvent, getOpenMeteoDataEvent, getWeatherForecast } from '@models';
+import './index.scss';
+import { Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => {
     const [sideMenuVisible, setSideMenuVisible] = useState<boolean>(true);
 
-    const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
+    const {coords} = useGeolocated({
         positionOptions: {
             enableHighAccuracy: false,
         },
@@ -34,6 +29,7 @@ const Layout: React.FC = () => {
         }
     }, [coords]);
 
+    // TODO: вынести логику запроса данных на страницу??
     return (
         <div className={cn('wrapper')}>
             {/* {(!latitude && !longitude) && <Preloader />} */}
@@ -49,7 +45,8 @@ const Layout: React.FC = () => {
                             longitude={longitude}
                         />
                     )}
-                {(latitude && longitude) && <Main />}
+                {/* {(latitude && longitude) && <Main />} */}
+                <Outlet />
             </section>
 
         </div>
