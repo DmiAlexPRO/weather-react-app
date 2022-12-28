@@ -1,0 +1,13 @@
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .p-progress-spinner-circle {
+    stroke: #008850;
+    animation: p-progress-spinner-dash 1.5s ease-in-out infinite;
+  }
+}
