@@ -11,4 +11,4 @@ export const defaultWeatherForecast: IWeatherForecast = {
     },
     list: undefined,
     cnt: 0,
-}
+};

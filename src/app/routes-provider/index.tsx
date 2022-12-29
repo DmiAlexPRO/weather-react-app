@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Loader } from '@components';
 import { FC, PropsWithChildren, Suspense } from 'react';
-import ErrorBoundary from '../../components/ErrorBoundary';
+import { ErrorBoundary, Loader } from '@widgets';
 
 const RoutesProvider: FC<PropsWithChildren> = ({children}) => (
     <ErrorBoundary navigate={useNavigate()}>
