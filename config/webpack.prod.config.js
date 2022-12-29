@@ -16,12 +16,17 @@ module.exports = {
         modules: [SRC_PATH, 'node_modules'],
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
+            "@src": path.resolve(__dirname, '../src'),
             "@shared": path.resolve(__dirname, '../src/shared'),
             "@components": path.resolve(__dirname, '../src/components'),
             "@services": path.resolve(__dirname, '../src/shared/services'),
             "@interfaces": path.resolve(__dirname, '../src/shared/interfaces'),
             "@utils": path.resolve(__dirname, '../src/shared/utils'),
-            "@models": path.resolve(__dirname, '../src/models')
+            "@models": path.resolve(__dirname, '../src/models'),
+            "@entities": path.resolve(__dirname, '../src/entities'),
+            "@features": path.resolve(__dirname, '../src/features'),
+            "@pages": path.resolve(__dirname, '../src/pages'),
+            "@widgets": path.resolve(__dirname, '../src/widgets')
         }
     },
     // devtool: 'source-map',

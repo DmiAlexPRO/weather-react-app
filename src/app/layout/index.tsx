@@ -1,8 +1,8 @@
-import { Header, Sidebar } from '@components';
+import { Header, Sidebar } from '@widgets';
 import React, { useEffect, useState } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useClassName } from '@utils';
-import { getCurrentWeatherEvent, getOpenMeteoDataEvent, getWeatherForecast } from '@models';
+import { getOpenMeteoDataEvent, getWeatherForecast } from '@entities';
 import './index.scss';
 import { Outlet } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ const Layout: React.FC = () => {
 
     useEffect(() => {
         if (latitude && longitude) {
-            getCurrentWeatherEvent({latitude, longitude});
+            // getCurrentWeatherEvent({latitude, longitude});
             getWeatherForecast({latitude, longitude});
             getOpenMeteoDataEvent({latitude, longitude});
         }
